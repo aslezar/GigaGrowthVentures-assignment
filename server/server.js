@@ -1,23 +1,30 @@
-const express = require("express")
-const mongoose = require('mongoose')
-const cors = require('cors')
+const express = require('express');
+const connectDB = require('./db/connect');
+const cors = require('cors');
+require('dotenv').config();
 
-const userRoutes = require("./routes/userRoutes")
+//Routes
+const userRoutes = require('./routes/userRoutes');
 
-const app = express()
+//Express App
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+//middleware
+app.use(cors());
+app.use(express.json());
+app.use('/users', userRoutes);
 
-app.use("/users", userRoutes)
-
+//Function Start
 const PORT = process.env.PORT || 5000;
-const MONGOOSE_URL = "mongodb://localhost:27017/LSYSTEM"
-
-mongoose.connect(MONGOOSE_URL, {useNewUrlParser: true})
-.then(()=> app.listen(PORT, ()=>{
-    console.log(`Server is running at port ${PORT}`);
-}))
-.catch(err=>{
-    console.log(err)
-})
+async function start() {
+	try {
+		await connectDB(process.env.MONGO_URL);
+		console.log('Connected to the DataBase Sucessfully');
+		app.listen(PORT, () => {
+			console.log(`Server is listening on http://localhost:${PORT}`);
+		});
+	} catch (error) {
+		console.log(`Error: ${error}`);
+	}
+}
+start();

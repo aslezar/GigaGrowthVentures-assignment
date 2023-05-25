@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // import { LOGOUT } from '../../redux/const/actionsTypes';
 
-const Nav = ({ user }) => {
+const Nav = ({ user, setUser }) => {
 	const [authenticated, setAuthenticated] = useState(false);
 
 	useEffect(() => {
-		if (user?.length) {
+		if (user) {
 			setAuthenticated(true);
 		} else {
 			setAuthenticated(false);
@@ -16,7 +16,7 @@ const Nav = ({ user }) => {
 
 	function handleLogOut(e) {
 		e.preventDefault();
-		localStorage.setItem('user_info', '');
+		setUser(null);
 	}
 	return (
 		<nav className={NavStyles.mainNav}>
@@ -30,12 +30,6 @@ const Nav = ({ user }) => {
 						<div>
 							<span className='d-blcok'>Account</span>
 							<div className={NavStyles.container2}>
-								<Link
-									className={`d-block ${NavStyles.linkBTN}`}
-									to='/account/profile'>
-									Profile
-								</Link>
-								<span className={NavStyles.or}>or</span>
 								<Link
 									onClick={handleLogOut}
 									className={NavStyles.linkBTN}

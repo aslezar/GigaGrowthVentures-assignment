@@ -41,7 +41,7 @@ function Card({ symbol: name, open: price, pChange: increase }) {
 			subject
 		)}&body=${encodeURIComponent(msg)}`;
 
-		window.location.href = mailtoLink;
+		window.open(mailtoLink, '_blank');
 	};
 	const handleWhatsappClick = () => {
 		navigator.clipboard

@@ -12,7 +12,7 @@ const Login = ({ setUser }) => {
 		try {
 			// login user
 			const { data } = await api.signInGoogle(accessToken);
-			setUser(data?.data);
+			setUser(data);
 			console.log(data);
 			navigate('/');
 		} catch (err) {

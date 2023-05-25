@@ -6,7 +6,7 @@ import Signup from './componets/signup';
 import HomePage from './componets/homepage';
 import Nav from './componets/nav';
 
-const initialUser = JSON.parse(localStorage.getItem('user_info')) || [];
+const initialUser = JSON.parse(localStorage.getItem('user_info')) || null;
 
 function App() {
 	const [user, setUser] = useState(initialUser);
@@ -16,26 +16,22 @@ function App() {
 	};
 	return (
 		<div className='App'>
-			<Nav user={user} />
+			<Nav
+				user={user}
+				setUser={updateUser}
+			/>
 			<Routes>
 				<Route
 					path='/'
-					// element={
-					// 	user?.length ? <HomePage /> : <Navigate to='/account/login' />
-					// }
-					element={<HomePage />}
+					element={user ? <HomePage /> : <Navigate to='/account/login' />}
 				/>
 				<Route
 					path='/account/login'
-					element={
-						user?.length ? <Navigate to='/' /> : <Login setUser={updateUser} />
-					}
+					element={user ? <Navigate to='/' /> : <Login setUser={updateUser} />}
 				/>
 				<Route
 					path='/account/signup'
-					element={
-						user?.length ? <Navigate to='/' /> : <Signup setUser={updateUser} />
-					}
+					element={user ? <Navigate to='/' /> : <Signup setUser={updateUser} />}
 				/>
 			</Routes>
 		</div>
