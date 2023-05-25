@@ -2,8 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoginStyles from './Login.module.css';
 import { useGoogleLogin } from '@react-oauth/google';
 import * as api from '../../api/index.js';
-// import { useDispatch } from 'react-redux';
-// import { signinGoogle, signin } from '../../redux/actions/auth';
 
 const Login = ({ setUser }) => {
 	const navigate = useNavigate();

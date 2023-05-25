@@ -1,7 +1,6 @@
 import NavStyles from './Nav.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import { LOGOUT } from '../../redux/const/actionsTypes';
 
 const Nav = ({ user, setUser }) => {
 	const [authenticated, setAuthenticated] = useState(false);
