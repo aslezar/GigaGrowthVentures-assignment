@@ -43,7 +43,7 @@ const signinController = async (req, res) => {
 				res.status(400).json({ message: 'Invalid access token!' });
 			});
 	} else {
-		res.status(400).json({ message: 'Invalid access token!' });
+		res.status(400).json({ message: 'Please provide Acess Token!' });
 	}
 };
 
@@ -93,7 +93,7 @@ const signupController = async (req, res) => {
 				res.status(400).json({ message: 'Invalid access token!' });
 			});
 	} else {
-		res.status(400).json({ message: 'Invalid access token!' });
+		res.status(400).json({ message: 'Please provide Acess Token!!' });
 	}
 };
 

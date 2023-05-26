@@ -43,19 +43,28 @@ function Card({ symbol: name, open: price, pChange: increase }) {
 
 		window.open(mailtoLink, '_blank');
 	};
-	const handleWhatsappClick = () => {
-		navigator.clipboard
-			.writeText(msg)
-			.then(() => {
-				setIsCopied(true);
-				console.log('Copied to clipboard:', msg);
-				setTimeout(() => {
-					setIsCopied(false);
-				}, 3000);
-			})
-			.catch((error) => {
-				console.error('Failed to copy to clipboard:', error);
-			});
+	const handleWhatsappClick = async () => {
+		const inputPhoneNumber = await prompt(
+			'Enter the phone number for WhatsApp:'
+		);
+		if (inputPhoneNumber) {
+			// const whatsappMsg = `${msg}%0AContact me at: ${inputPhoneNumber}`;
+			const whatsappMsg = `https://wa.me/${inputPhoneNumber}?text=${msg}`;
+
+			navigator.clipboard
+				.writeText(whatsappMsg)
+				.then(() => {
+					setIsCopied(true);
+					window.open(whatsappMsg, '_blank');
+					console.log('Copied to clipboard:', whatsappMsg);
+					setTimeout(() => {
+						setIsCopied(false);
+					}, 3000);
+				})
+				.catch((error) => {
+					console.error('Failed to copy to clipboard:', error);
+				});
+		}
 	};
 	return (
 		<div className={HomeStyle.stock}>
