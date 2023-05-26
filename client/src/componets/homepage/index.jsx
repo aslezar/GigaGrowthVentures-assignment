@@ -51,19 +51,7 @@ function Card({ symbol: name, open: price, pChange: increase }) {
 			// const whatsappMsg = `${msg}%0AContact me at: ${inputPhoneNumber}`;
 			const whatsappMsg = `https://wa.me/${inputPhoneNumber}?text=${msg}`;
 
-			navigator.clipboard
-				.writeText(whatsappMsg)
-				.then(() => {
-					setIsCopied(true);
-					window.open(whatsappMsg, '_blank');
-					console.log('Copied to clipboard:', whatsappMsg);
-					setTimeout(() => {
-						setIsCopied(false);
-					}, 3000);
-				})
-				.catch((error) => {
-					console.error('Failed to copy to clipboard:', error);
-				});
+			window.open(whatsappMsg, '_blank');
 		}
 	};
 	return (
