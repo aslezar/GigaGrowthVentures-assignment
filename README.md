@@ -27,7 +27,7 @@ You just need to share a video screen record of the app with clear explanation i
 
 ## Getting Started
 
-To run Sociopedia locally on your machine, follow these steps:
+To rund the App locally on your machine, follow these steps:
 
 1. Clone the repository:
 
@@ -73,4 +73,4 @@ To run Sociopedia locally on your machine, follow these steps:
    npm run client
    ```
 
-8. Access Sociopedia in your web browser at `http://localhost:3000`.
+8. Access the App in your web browser at `http://localhost:3000`.
